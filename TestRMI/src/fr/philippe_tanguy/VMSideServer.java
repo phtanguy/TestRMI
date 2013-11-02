@@ -19,8 +19,10 @@ public class VMSideServer
 
     // Enregistrement de la partie serveur : PaparazziTransmitter pourra se connecter à uav3i.
     Registry localRegistry = LocateRegistry.createRegistry(portNumber);
-    IVMSide vmSide = (IVMSide) UnicastRemoteObject.exportObject(new VMSideImpl(), portNumber);
-    localRegistry.rebind("vmSide", vmSide);
+    IVMSide1 vmSide1 = (IVMSide1) UnicastRemoteObject.exportObject(new VMSide1Impl(), portNumber);
+    localRegistry.rebind("vmSide1", vmSide1);
+    IVMSide2 vmSide2 = (IVMSide2) UnicastRemoteObject.exportObject(new VMSide2Impl(), portNumber);
+    localRegistry.rebind("vmSide2", vmSide2);
 
     System.out.println("####### vmSide started on port " + portNumber + ".");
   }

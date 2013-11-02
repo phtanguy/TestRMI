@@ -1,11 +1,14 @@
 package fr.philippe_tanguy;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface IVMSide extends Remote
+public class VMSide2Impl implements IVMSide2
 {
   //-----------------------------------------------------------------------------
-  public String toUpperCase(String s) throws RemoteException;
+  @Override
+  public int add(int i1, int i2) throws RemoteException
+  {
+    return (i1 + i2);
+  }
   //-----------------------------------------------------------------------------
 }
