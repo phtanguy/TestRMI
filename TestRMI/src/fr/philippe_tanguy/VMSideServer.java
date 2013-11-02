@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Properties;
 
 public class VMSideServer
 {
@@ -14,6 +15,10 @@ public class VMSideServer
   //-----------------------------------------------------------------------------
   public VMSideServer() throws RemoteException, UnknownHostException
   {
+    // Pour une utilisation avec VMware...
+    System.setProperty("java.rmi.server.hostname",         "192.168.1.77");
+    System.setProperty("java.rmi.server.useLocalHostName", "true");
+
     InetAddress thisIp = InetAddress.getLocalHost(); 
     System.out.println("Mon adresse IP : " + thisIp);
 
