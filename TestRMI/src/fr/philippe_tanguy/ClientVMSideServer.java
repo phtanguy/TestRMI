@@ -31,12 +31,13 @@ public class ClientVMSideServer
     //IVMSide1 vmSide1 = (IVMSide1) Naming.lookup("rmi://192.168.110.130/vmSide1");
     IVMSide1 vmSide1 = (IVMSide1) remoteRegistry.lookup("vmSide1");
     System.out.println("Service VMSide1 récupéré.");
-    String s = "abcdefg";
-    System.out.println("Appel : " + s + " ---> " + vmSide1.toUpperCase(s));
-
     IVMSide2 vmSide2 = (IVMSide2) remoteRegistry.lookup("vmSide2");
     System.out.println("Service VMSide2 récupéré.");
-    System.out.println("Appel : 4 + 3 ---> " + vmSide2.add(4, 3));
+
+    String s = "abcdefg";
+    System.out.println("Appel : vmSide1.toUpperCase(" + s + ") ---> " + vmSide1.toUpperCase(s));
+
+    System.out.println("Appel : vmSide2.add(4, 3) ---> " + vmSide2.add(4, 3));
     
     DataObject1 dataObject1 = new DataObject1(7);
     System.out.println("Appel : vmSide2.transform1to2(" + dataObject1 + ") ---> " + vmSide2.transform1to2(dataObject1));
