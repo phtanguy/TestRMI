@@ -39,7 +39,7 @@ public class ClientVMSideServer
     System.out.println("Appel : 4 + 3 ---> " + vmSide2.add(4, 3));
     
     DataObject1 dataObject1 = new DataObject1(7);
-    DataObject2 dataObject2 = vmSide2.transform1to2(dataObject1);
+    System.out.println("Appel : vmSide2.transform1to2(" + dataObject1 + ") ---> " + vmSide2.transform1to2(dataObject1));
 }
   //-----------------------------------------------------------------------------
   public static void main(String[] args)
