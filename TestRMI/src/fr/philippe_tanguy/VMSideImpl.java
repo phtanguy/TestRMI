@@ -1,11 +1,14 @@
 package fr.philippe_tanguy;
 
-public class TestRMI
+import java.rmi.RemoteException;
+
+public class VMSideImpl implements IVMSide
 {
   //-----------------------------------------------------------------------------
-  public static void main(String[] args)
+  @Override
+  public String toUpperCase(String s) throws RemoteException
   {
-    System.out.println("Salut, c'est moi : Philippe TANGUY !");
+    return s.toUpperCase();
   }
   //-----------------------------------------------------------------------------
 }

@@ -1,11 +1,11 @@
 package fr.philippe_tanguy;
 
-public class TestRMI
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface IVMSide extends Remote
 {
   //-----------------------------------------------------------------------------
-  public static void main(String[] args)
-  {
-    System.out.println("Salut, c'est moi : Philippe TANGUY !");
-  }
+  public String toUpperCase(String s) throws RemoteException;
   //-----------------------------------------------------------------------------
 }
