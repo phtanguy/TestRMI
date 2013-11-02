@@ -13,15 +13,17 @@ public class VMSide2Impl implements IVMSide2
   }
   //-----------------------------------------------------------------------------
   @Override
-  public DataObject1 transform2to1(DataObject2 dataObject2) throws RemoteException
+  public DataObject2 transform1to2(DataObject1 dataObject1) throws RemoteException
   {
-    return DataObjectUtils.toDataObject1(dataObject2);
+    System.out.println("VMSide2Impl --> transform1to2(" + dataObject1 + ")");
+    return DataObjectUtils.toDataObject2(dataObject1);
   }
   //-----------------------------------------------------------------------------
   @Override
-  public DataObject2 transform1to2(DataObject1 dataObject1) throws RemoteException
+  public DataObject1 transform2to1(DataObject2 dataObject2) throws RemoteException
   {
-    return DataObjectUtils.toDataObject2(dataObject1);
+    System.out.println("VMSide2Impl --> transform2to1(" + dataObject2 + ")");
+    return DataObjectUtils.toDataObject1(dataObject2);
   }
   //-----------------------------------------------------------------------------
 }
