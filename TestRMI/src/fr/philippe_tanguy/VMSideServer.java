@@ -16,11 +16,23 @@ public class VMSideServer
   public VMSideServer() throws RemoteException, UnknownHostException
   {
     // Pour une utilisation avec VMware...
-    System.setProperty("java.rmi.server.hostname",         "192.168.1.77");
+    // Le fonctionnement de RMI est problématique sur des machines avec plusieurs
+    // adresses IP (cas d'un ordinateur hébergeant une machine virtuelle) :
+    // l'adresse IP utilisée pour les stubs RMI n'est alors pas la bonne.
+    // Voir : http://www.chipkillmar.net/2011/06/22/multihomed-hosts-and-java-rmi/
+    // Il faut alors, côté serveur, renseigner les propiétés système
+    // "java.rmi.server.hostname" et "java.rmi.server.useLocalHostName".
+    // Deux options sont possibles :
+    //   - Définir les propriétés de manière programmatique : System.setProperty(...).
+    //   - Lancer le serveur avec les oprions -Djava.rmi.server.hostname=... et
+    //     -Djava.rmi.server.useLocalHostName=true.
+    
+    System.setProperty("java.rmi.server.hostname",         "192.168.1.7");
+    //System.setProperty("java.rmi.server.hostname",         "192.168.1.77");
     System.setProperty("java.rmi.server.useLocalHostName", "true");
 
-    InetAddress thisIp = InetAddress.getLocalHost(); 
-    System.out.println("Mon adresse IP : " + thisIp);
+    String ipAddress = InetAddress.getLocalHost().getHostAddress(); 
+    System.out.println("Mon adresse IP : " + ipAddress);
 
     // Enregistrement de la partie serveur : PaparazziTransmitter pourra se connecter à uav3i.
     Registry localRegistry = LocateRegistry.createRegistry(portNumber);

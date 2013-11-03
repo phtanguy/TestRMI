@@ -19,10 +19,7 @@ public class ClientVMSideServer
 
     // Connexion en tant que client : PaparazziTransmitter se connecte à uav3i.
     Registry remoteRegistry = LocateRegistry.getRegistry("192.168.1.77", 10000);
-    //Registry remoteRegistry = LocateRegistry.getRegistry("192.168.110.130", 10000);
-    //Registry remoteRegistry = LocateRegistry.getRegistry("192.168.126.128", 10000);
-    //Registry remoteRegistry = LocateRegistry.getRegistry("192.168.1.9", 10000);
-    //Registry remoteRegistry = LocateRegistry.getRegistry("127.0.1.1", 10000);
+    //Registry remoteRegistry = LocateRegistry.getRegistry("192.168.1.7", 10000);
     
     String[] services = remoteRegistry.list();
     for(String service : services)
