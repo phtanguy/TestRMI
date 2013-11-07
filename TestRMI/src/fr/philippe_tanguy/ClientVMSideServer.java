@@ -2,7 +2,6 @@ package fr.philippe_tanguy;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.rmi.NotBoundException;
@@ -54,30 +53,6 @@ public class ClientVMSideServer
   //-----------------------------------------------------------------------------
   public ClientVMSideServer() throws RemoteException, NotBoundException
   {
-
-//    if(System.getSecurityManager() == null)
-//      System.setSecurityManager(new RMISecurityManager());
-
-    // Connexion en tant que client : PaparazziTransmitter se connecte à uav3i.
-    //Registry remoteRegistry = LocateRegistry.getRegistry("192.168.1.77", 10000);
-//    Registry remoteRegistry = LocateRegistry.getRegistry("192.168.1.9", 10000);
-    //Registry remoteRegistry = LocateRegistry.getRegistry("192.168.1.7", 10000);
-    
-//    System.out.println("sun.rmi.transport.connectionTimeout = " + System.getProperty("sun.rmi.transport.connectionTimeout"));
-
-//    System.setProperty("sun.rmi.transport.tcp.responseTimeout", "10");
-//    System.setProperty("sun.rmi.transport.proxy.connectTimeout", "1000");
-//    System.setProperty("sun.rmi.transport.connectionTimeout", "1000");
-    
-//    String[] services = remoteRegistry.list();
-//    for(String service : services)
-//      System.out.println("---> Service disponible : " + service);
-//    
-//    IVMSide1 vmSide1 = (IVMSide1) remoteRegistry.lookup("vmSide1");
-//    System.out.println("Service VMSide1 récupéré.");
-//    IVMSide2 vmSide2 = (IVMSide2) remoteRegistry.lookup("vmSide2");
-//    System.out.println("Service VMSide2 récupéré.");
-    
     new Thread(new TestCall()).start();
 
 //    String s = "abcdefg";
@@ -120,10 +95,7 @@ public class ClientVMSideServer
   private class TestCall implements Runnable
   {
     private IVMSide2 vmSide2 = null;
-//    public TestCall(IVMSide2 vmSide2)
-//    {
-//      this.vmSide2 = vmSide2;
-//    }
+
     @Override
     public void run()
     {
