@@ -26,9 +26,14 @@ public class VMSideServer
     //   - Lancer le serveur avec les oprions -Djava.rmi.server.hostname=... et
     //     -Djava.rmi.server.useLocalHostName=true.
     
-    System.setProperty("java.rmi.server.hostname",         "192.168.1.7");
-    //System.setProperty("java.rmi.server.hostname",         "192.168.1.77");
-    System.setProperty("java.rmi.server.useLocalHostName", "true");
+//    System.setProperty("java.rmi.server.hostname",         "192.168.1.7");
+//    //System.setProperty("java.rmi.server.hostname",         "192.168.1.77");
+//    System.setProperty("java.rmi.server.useLocalHostName", "true");
+
+    System.out.println("sun.rmi.transport.connectionTimeout = " + System.getProperty("sun.rmi.transport.connectionTimeout"));
+//    System.setProperty("sun.rmi.transport.tcp.responseTimeout", "10");
+//    System.setProperty("sun.rmi.transport.proxy.connectTimeout", "1000");
+    System.setProperty("sun.rmi.transport.connectionTimeout", "1000");
 
     String ipAddress = InetAddress.getLocalHost().getHostAddress(); 
     System.out.println("Mon adresse IP : " + ipAddress);
