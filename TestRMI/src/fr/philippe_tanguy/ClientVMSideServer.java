@@ -13,6 +13,10 @@ import java.rmi.server.RMISocketFactory;
 public class ClientVMSideServer
 {
   //-----------------------------------------------------------------------------
+  //private String host = "10.29.226.130";
+  private String host = "192.168.1.7";
+  private int    port = 10000;
+  //-----------------------------------------------------------------------------
   /*
    * Permet de fixer facilement le timeout lors de la connexion sur la partie
    * serveur. Le timeout doit être positif ou nul. La valeur 0 indique un timeout
@@ -48,8 +52,6 @@ public class ClientVMSideServer
       e.printStackTrace();
     }
   }
-  private String host = "192.168.1.9";
-  private int    port = 10000;
   //-----------------------------------------------------------------------------
   public ClientVMSideServer() throws RemoteException, NotBoundException
   {
@@ -68,7 +70,7 @@ public class ClientVMSideServer
   {
     Registry remoteRegistry = LocateRegistry.getRegistry(host, port);
     IVMSide2 vmSide2 = (IVMSide2) remoteRegistry.lookup("vmSide2");
-    System.out.println("Service VMSide2 récupéré.");
+    System.out.println("Service VMSide2 récupéré à " + host + ":" + port +".");
     return vmSide2;
   }
   //-----------------------------------------------------------------------------
