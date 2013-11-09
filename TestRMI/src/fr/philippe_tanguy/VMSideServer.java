@@ -11,29 +11,30 @@ public class VMSideServer
 {
   //-----------------------------------------------------------------------------
   public static int portNumber = 10000;
+  
+  private boolean multihomedHosts = true;
+  //private String serverHostname = "192.168.1.77";
+  private String serverHostname = "192.168.1.7";
   //-----------------------------------------------------------------------------
   public VMSideServer() throws RemoteException, UnknownHostException
   {
-    // Pour une utilisation avec VMware...
-    // Le fonctionnement de RMI est problématique sur des machines avec plusieurs
-    // adresses IP (cas d'un ordinateur hébergeant une machine virtuelle) :
-    // l'adresse IP utilisée pour les stubs RMI n'est alors pas la bonne.
-    // Voir : http://www.chipkillmar.net/2011/06/22/multihomed-hosts-and-java-rmi/
-    // Il faut alors, côté serveur, renseigner les propiétés système
-    // "java.rmi.server.hostname" et "java.rmi.server.useLocalHostName".
-    // Deux options sont possibles :
-    //   - Définir les propriétés de manière programmatique : System.setProperty(...).
-    //   - Lancer le serveur avec les oprions -Djava.rmi.server.hostname=... et
-    //     -Djava.rmi.server.useLocalHostName=true.
-    
-//    System.setProperty("java.rmi.server.hostname",         "192.168.1.7");
-//    //System.setProperty("java.rmi.server.hostname",         "192.168.1.77");
-//    System.setProperty("java.rmi.server.useLocalHostName", "true");
-
-//    System.out.println("sun.rmi.transport.connectionTimeout = " + System.getProperty("sun.rmi.transport.connectionTimeout"));
-//    System.setProperty("sun.rmi.transport.tcp.responseTimeout", "10");
-//    System.setProperty("sun.rmi.transport.proxy.connectTimeout", "1000");
-//    System.setProperty("sun.rmi.transport.connectionTimeout", "1000");
+    if(multihomedHosts)
+    {
+      // Pour une utilisation avec VMware...
+      // Le fonctionnement de RMI est problématique sur des machines avec plusieurs
+      // adresses IP (cas d'un ordinateur hébergeant une machine virtuelle) :
+      // l'adresse IP utilisée pour les stubs RMI n'est alors pas la bonne.
+      // Voir : http://www.chipkillmar.net/2011/06/22/multihomed-hosts-and-java-rmi/
+      // Il faut alors, côté serveur, renseigner les propiétés système
+      // "java.rmi.server.hostname" et "java.rmi.server.useLocalHostName".
+      // Deux options sont possibles :
+      //   - Définir les propriétés de manière programmatique : System.setProperty(...).
+      //   - Lancer le serveur avec les oprions -Djava.rmi.server.hostname=... et
+      //     -Djava.rmi.server.useLocalHostName=true.
+      
+      System.setProperty("java.rmi.server.hostname",         serverHostname);
+      System.setProperty("java.rmi.server.useLocalHostName", "true");
+    }
 
     String ipAddress = InetAddress.getLocalHost().getHostAddress(); 
     System.out.println("Mon adresse IP : " + ipAddress);
