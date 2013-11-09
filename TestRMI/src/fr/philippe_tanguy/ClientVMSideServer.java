@@ -17,16 +17,16 @@ public class ClientVMSideServer
   private String host = "192.168.1.7";
   private int    port = 10000;
   //-----------------------------------------------------------------------------
-  /*
-   * Permet de fixer facilement le timeout lors de la connexion sur la partie
-   * serveur. Le timeout doit être positif ou nul. La valeur 0 indique un timeout
-   * infini.
-   * À explorer : la valeur maxi semble être de 20 secondes. Toute valeur
-   * supérieure (comme la valeur 0 = infini) ne génère pas de timout supérieur.
-   * Dépendant de la plateforme ?
-   */
   static
   {
+    /*
+     * Permet de fixer facilement le timeout lors de la connexion sur la partie
+     * serveur. Le timeout doit être positif ou nul. La valeur 0 indique un
+     * timeout infini.
+     * À explorer : la valeur maxi semble être de 20 secondes. Toute valeur
+     * supérieure (comme la valeur 0 = infini) ne génère pas de timout supérieur.
+     * Dépendant de la plateforme ?
+     */
     try
     {
       RMISocketFactory.setSocketFactory(new RMISocketFactory()
